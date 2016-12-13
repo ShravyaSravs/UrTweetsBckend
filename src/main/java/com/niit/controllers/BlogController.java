@@ -1,7 +1,9 @@
-package com.niit.controller;
+package com.niit.controllers;
 
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,9 +25,11 @@ private BlogDAO blogDAO;
 
 
 @PostMapping(value="/createblog")
-public ResponseEntity<Blog> addblog(@RequestBody Blog blog){
+public ResponseEntity<Blog> addblog(@RequestBody Blog blog,HttpSession session){
 	System.out.println("hello");
+	int uid=(Integer) session.getAttribute("uid");
 	blog.setDoc(new Date());
+	blog.setUserid(uid);
 	blogDAO.saveOrUpdate(blog);
 	return new ResponseEntity<Blog>(blog,HttpStatus.OK);
 	

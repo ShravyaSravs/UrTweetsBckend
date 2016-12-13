@@ -1,7 +1,9 @@
-package com.niit.controller;
+package com.niit.controllers;
 
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,8 +24,10 @@ public class ForumController {
 	@Autowired
 	ForumDAO forumDAO;
 	@PostMapping("/createforum")
-	public ResponseEntity<Forum> createforum(@RequestBody Forum forum){
+	public ResponseEntity<Forum> createforum(@RequestBody Forum forum,HttpSession session){
+		int uid=(Integer) session.getAttribute("uid");
 		forum.setDoc(new Date());
+		forum.setUserid(uid);
 		forumDAO.saveOrUpdate(forum);
 		return new ResponseEntity<Forum>(forum ,HttpStatus.OK);
 	}
@@ -38,6 +42,11 @@ public class ForumController {
 	public ResponseEntity<Forum> deleteforum(Forum forum,@PathVariable("forumid") int forumid){
 		Forum forum1=forumDAO.getforum(forumid);
 		forumDAO.delete(forum1);
+		return new ResponseEntity<Forum>(forum,HttpStatus.OK);
+	}
+	@GetMapping(value="/individualforum/{id}")
+	public ResponseEntity<Forum> individualforum(@PathVariable("id") int id){
+		Forum forum=forumDAO.getforum(id);
 		return new ResponseEntity<Forum>(forum,HttpStatus.OK);
 	}
 }

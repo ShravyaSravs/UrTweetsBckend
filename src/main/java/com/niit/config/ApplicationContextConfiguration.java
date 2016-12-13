@@ -18,8 +18,13 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import com.niit.dao.BlogDAO;
 import com.niit.dao.BlogDAOImpl;
 import com.niit.dao.EventDAO;
+import com.niit.dao.EventDAOImpl;
+import com.niit.dao.ForumCommentDAO;
+import com.niit.dao.ForumCommentDAOImpl;
 import com.niit.dao.ForumDAO;
 import com.niit.dao.ForumDAOImpl;
+import com.niit.dao.FriendDAO;
+import com.niit.dao.FriendDAOImpl;
 import com.niit.dao.JobDAO;
 import com.niit.dao.JobDAOImpl;
 import com.niit.dao.UsersDAO;
@@ -27,15 +32,17 @@ import com.niit.dao.UsersDAOImpl;
 import com.niit.model.Blog;
 import com.niit.model.Event;
 import com.niit.model.Forum;
+import com.niit.model.ForumComment;
+import com.niit.model.Friend;
 import com.niit.model.Job;
 import com.niit.model.Users;
 
 
 @Configuration
-@ComponentScan("com.niit.collab")
+@ComponentScan("com.niit.")
 @EnableTransactionManagement
 @EnableWebMvc
-public class ApplicationContextConfig {
+public class ApplicationContextConfiguration {
 
 	
 	@Bean(name="dataSource")
@@ -43,8 +50,8 @@ public class ApplicationContextConfig {
 	DriverManagerDataSource dataSource=new DriverManagerDataSource();	
 	dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
 	dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
-	dataSource.setUsername("shravya");
-	dataSource.setPassword("shravya");
+	dataSource.setUsername("ASHRAVYA");
+	dataSource.setPassword("SHRAVYA");
 	return dataSource;
 	}
 
@@ -66,6 +73,8 @@ public SessionFactory getSessionFactory(DataSource dataSource){
 	sessionBuilder.addAnnotatedClass(Event.class);
 	sessionBuilder.addAnnotatedClass(Forum.class);
 	sessionBuilder.addAnnotatedClass(Job.class);
+	sessionBuilder.addAnnotatedClass(Friend.class);
+	sessionBuilder.addAnnotatedClass(ForumComment.class);
 	return sessionBuilder.buildSessionFactory();
 	
 }
@@ -108,4 +117,16 @@ public JobDAO getJobDAO(SessionFactory sessionFactory){
 	
 	return new JobDAOImpl(sessionFactory);
 }
-}*/
+@Autowired
+@Bean(name="friendDAO")
+public FriendDAO getFriendDAO(SessionFactory sessionFactory){
+	
+	return new FriendDAOImpl(sessionFactory);
+}
+@Autowired
+@Bean(name="forumCommentDAO")
+public ForumCommentDAO getForumCommentDAO(SessionFactory sessionFactory){
+	return new ForumCommentDAOImpl(sessionFactory);
+}
+}
+*/

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:tx="http://www.springframework.org/schema/tx"
@@ -21,7 +21,7 @@ http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 		<beans:property name="password" value="SHRAVYA" />
 	</beans:bean>
 
-	<!-- Session factory object and Hibernate properties for Oracle Data source -->
+<!-- 	Session factory object and Hibernate properties for Oracle Data source -->
 	<beans:bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="hibernateProperties">
@@ -41,4 +41,4 @@ http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
 	
-</beans>
+</beans> 
