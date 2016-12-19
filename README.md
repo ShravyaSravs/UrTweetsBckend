@@ -17,7 +17,7 @@ Collaboration project consisting of basic funtionality like
 ##Softwares used
 -	**Eclipse Neon1A**
 	Eclipse is an integrated development environment (IDE) used in computer programming, and is the most widely used Java IDE.It contains a base workspace and an extensible plug-in system for customizing the environment. Eclipse is written mostly in Java and its primary use is for developing Java applications.
-    [Click here to download Eclipse Neon 1A]
+    
     
 -	**Oracle XE 11g**
 	Oracle Database 11g Express Edition (Oracle Database XE) is an entry-level, small-footprint database based on the Oracle Database 11g Release 2 code base. It's free to develop, deploy, and distribute; fast to download; and simple to administer.
@@ -32,7 +32,8 @@ Collaboration project consisting of basic funtionality like
 
 ##Frameworks used
 -	**Bootstrap v3.3.7**
-	Bootstrap is the most popular HTML, CSS, and JavaScript framework for developing  	  responsive, mobile-first web sites. [Click here to downlaod Bootstrap 3.3.7](https://github.com/twbs/bootstrap/releases/download/v3.3.7/bootstrap-3.3.7-dist.zip) or `npm install bootstrap@3`
+	Bootstrap is the most popular HTML, CSS, and JavaScript framework for developing  	  responsive, mobile-first web sites. 
+	
 	- bootstrap.min.css
 	- bootstrap-theme.css
 	- bootstrap.min.js
